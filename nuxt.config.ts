@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  modules: [
+  css: ['~/assets/scss/main.scss'],
+  modules: ['nuxt-icon','nuxt-icons',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -19,5 +20,12 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    css:{
+      preprocessorOptions:{
+        scss:{
+          additionalData: '@use "~/assets/scss/__variables.scss" as *;'
+        }
+      }
+    }
   },
 })
