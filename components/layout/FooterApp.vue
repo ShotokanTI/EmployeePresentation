@@ -25,7 +25,7 @@ const ICONS_NAMES = ["uil:github", "uil:linkedin", "uil:youtube"]
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .icon {
     &:hover .icon__divider {
         display: block;

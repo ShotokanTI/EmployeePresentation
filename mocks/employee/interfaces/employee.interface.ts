@@ -1,5 +1,4 @@
 interface Employee {
-    [index: string]: number | string;
     id: number,
     name: string,
     description: string,
