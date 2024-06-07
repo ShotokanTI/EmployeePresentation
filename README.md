@@ -1,75 +1,60 @@
-# Nuxt 3 Minimal Starter
+# Lista de funcionários APP - LogComex
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este é um projeto Nuxt 3 para listar funcionários, com detalhes adicionais quando um funcionário é clicado. Este README fornece instruções sobre como configurar, construir e executar o projeto utilizando docker ou localmente.
 
-## Setup
+## Pré-requisitos
 
-Make sure to install the dependencies:
+Certifique-se de ter o Node instalado na sua máquina.
 
-```bash
-# npm
-npm install
+- [Node](https://nodejs.org/en)
 
-# pnpm
-pnpm install
+Certifique-se de ter o Docker instalado na sua máquina.
 
-# yarn
-yarn install
+- [Docker](https://docs.docker.com/get-docker/)
 
-# bun
-bun install
-```
 
-## Development Server
+## Rodando localmente
 
-Start the development server on `http://localhost:3000`:
+Clone o projeto
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+  git clone https://github.com/ShotokanTI/EmployeePresentation
 ```
 
-## Production
-
-Build the application for production:
+Entre no diretório do projeto
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+  cd EmployeePresentation
 ```
 
-Locally preview production build:
+Instale as dependências
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+  npm install
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Inicie o servidor
+
+```bash
+  npm run dev
+```
+
+## Rodando virtualmente com docker
+
+Crie a imagem docker
+
+```bash
+  docker build -t my-employees-app .
+```
+
+Execute o container
+
+```bash
+ docker run -p 3000:3000 my-employees-app
+```
+
+Pronto,agora só executar no browser
+
+```bash
+  http:/localhost:3000
+```
