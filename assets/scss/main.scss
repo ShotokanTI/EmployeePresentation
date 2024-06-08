@@ -1,10 +1,7 @@
 @import "@/assets/scss/__variables.scss";
 @import "@/assets/scss/__overrides.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 * {
-    padding:0;
-    margin:0;
-    vertical-align:baseline;
-    list-style:none;
-    border:0
-    }
+  font-family: Poppins, sans-serif;
+}

@@ -9,12 +9,18 @@ import BreadCrumbApp from "../components/layout/BreadCrumbApp.vue"
         <v-app>
             <v-layout>
                 <HeaderApp></HeaderApp>
-                <v-main class="d-flex align-center justify-center position-relative primary" style="min-height: 300px;">
+                <v-main class="d-flex align-center justify-center">
                     <BreadCrumbApp />
                     <slot />
-                    </v-main>
+                </v-main>
                 <FooterApp></FooterApp>
             </v-layout>
         </v-app>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.v-main{
+    padding:0
+}
+</style>

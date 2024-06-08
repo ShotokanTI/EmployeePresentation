@@ -1,49 +1,69 @@
 <script setup lang="ts">
 import type { Employee } from '~/mocks/employee/interfaces/employee.interface';
-import type { Props } from '~/mocks/employee/interfaces/employee.list.props.interface';
 
-let { employees } = defineProps<Props>()
+let employees: Ref<Employee[]> = ref([]);
+const skeletonLoading: Ref<boolean> = ref(true);
 const router = useRouter();
-const filteredEmployees = ref<Employee[]>(employees);
 const search = ref("");
+
+onMounted(() => {
+    init()
+})
+
+function init() {
+    emulateHttpService();
+}
+
+function emulateHttpService() {
+    const emulateCallApi = 1000;
+    setTimeout(() => {
+        employees.value = useEmployeeList().value
+        skeletonLoading.value = false;
+    }, emulateCallApi);
+}
 
 function handleFilter(newFilteredEmployees: string): void {
     search.value = newFilteredEmployees;
 }
 
 function goToDetail(event: MouseEvent, { item }: { item: Employee }): void {
-  router.push({ path: `employee-details/${item.id}`});
+    useSelectedEmployee().value = item.id
+    router.push({ path: `employee-details` });
 }
 
 </script>
 
 <template>
-    <!-- Tabela de Funcionários -->
-    <v-container>
-        <v-data-table @click:row="goToDetail" hide-default-footer height="400" width="620" :items="filteredEmployees"
-            :search="search" class="elevation-3">
+    <div class="my-10 elevation-1 rounded-lg mx-10">
+        <v-skeleton-loader v-if="skeletonLoading" type="table" width="100%" height="500">
+        </v-skeleton-loader>
+        <v-data-table v-else :mobile="$vuetify.display.smAndDown" :hide-default-header="$vuetify.display.mobile"
+            disable-sort fixed-header @click:row="goToDetail" hide-default-footer :items="employees" :search="search"
+            width="100%" style="max-height: 500px">
             <template v-slot:top>
-                <EmployeeFilter :employees="employees" @onFilterApply="handleFilter" />
+                <div
+                    class="d-flex flex-column text-center text-sm-start flex-sm-row justify-center align-center bg-whitesmoke mx-5 mb-2">
+                    <span class="text-h6 text-sm-h4  w-100 font-weigth-bold text-secondary">
+                        Employee Localization</span>
+                    <EmployeeFilter @onFilterApply="handleFilter" />
+                </div>
+                <v-sheet min-height="10" class="bg-secondary"></v-sheet>
             </template>
             <template v-slot:item.photo="{ item }">
-                <v-hover>
-                    <template v-slot:default="{ isHovering, props }">
-                        <v-img v-bind="props" :height="isHovering ? 62 : 60" :width="isHovering ? 62 : 60"
-                            class="ma-4 cursor-pointer teste" :src="item.photo" rounded="circle"></v-img>
-                    </template>
-                </v-hover>
+                <v-sheet class="d-flex justify-end rounded-xl" color="transparent" width="100%">
+                    <div v-tooltip:bottom="'Click to see more'">
+                        <v-img class="ma-4 cursor-pointer rounded-circle" style="width:56px;height: 56px;"
+                            :src="item.photo"></v-img>
+                    </div>
+                </v-sheet>
             </template>
         </v-data-table>
-    </v-container>
+    </div>
 </template>
 
 <style>
 .v-data-table__tr:hover {
     background-color: #EFEFEF;
     cursor: pointer
-}
-
-.teste {
-    transition: all 250ms ease-in;
 }
 </style>

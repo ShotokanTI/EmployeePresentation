@@ -1,6 +1,10 @@
-$primary-color: #6613D0;
-$secondary-color: #FE8F1C;
+$primary-color: #6613d0;
+$secondary-color: #fe8f1c;
 
 body {
-    background-color: $primary-color;  // Regra temporária para depuração
-  }
+  background-color: $primary-color; // Regra temporária para depuração
+}
+
+.v-main {
+  padding: 0;
+}

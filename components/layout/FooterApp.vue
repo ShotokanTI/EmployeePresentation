@@ -18,7 +18,7 @@ const ICONS_NAMES = ["uil:github", "uil:linkedin", "uil:youtube"]
             </div>
             <div class="d-flex w-100 bg-secondary justify-center">
                 <span class="text-white ma-2">
-                    Desenvolvido por <span class="font-weight-bold">Matheus Barbosa do Nascimento</span>
+                    Developed by <span class="font-weight-bold">Matheus Barbosa do Nascimento</span>
                 </span>
             </div>
         </v-footer>

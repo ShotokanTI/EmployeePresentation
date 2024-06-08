@@ -1,7 +1,7 @@
 <template>
-  <div v-if="route.path !== '/'" style="top:15%;left:4%" class="position-absolute">
+  <div v-if="route.path !== '/'" style="top:15%;left:20%" class="position-absolute">
     <nav class="breadcrumb" aria-label="breadcrumbs">
-      <v-breadcrumbs class="bg-primary rounded" :items="crumbs" divider=">">
+      <v-breadcrumbs class="bg-secondary rounded-xl text-white" :items="crumbs" divider=">">
         <template v-slot:divider>
           <Icon name="uil:angle-right" class="bg-secondary text-white rounded-xl" />
         </template>
@@ -25,7 +25,7 @@ const crumbs = computed(() => {
     const matchedRoute = router.resolve(fullPath).matched[0];
     const name = matchedRoute?.meta?.breadcrumb || path.charAt(0).toUpperCase() + path.slice(1);
     return {
-      title: name,
+      title: name.toLowerCase(),
       href: fullPath,
       disabled: index >= 0
     };
@@ -33,7 +33,7 @@ const crumbs = computed(() => {
 
   // Add home route at the beginning
   crumbsArray.unshift({
-    title: 'Home',
+    title: 'home',
     href: '/',
     disabled: route.path === '/'
   });
