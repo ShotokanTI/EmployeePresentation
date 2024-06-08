@@ -35,32 +35,34 @@ const employeesX = computed(() => {
 </script>
 
 <template>
-    <v-card class="d-flex justify-center align-center mx-10 mt-16 mt-lg-0 mx-lg-0" elevation="1">
+    <v-card class="d-flex justify-center align-center mx-10 mt-16 mt-xl-0 mx-xl-0" width="600px" height="420px" elevation="1">
         <div class="d-flex flex-column align-center justify-center w-100 ma-10">
             <div class="d-flex align-center ga-10">
                 <Icon :class="{ 'invisible': !arrowVisibilityLeft }" @click="applyPrevious"
-                class="cursor-pointer bg-primary" name="uil:arrow-left" color="primary" size="30" />
+                    class="cursor-pointer bg-primary" name="uil:arrow-left" color="primary" size="30" />
                 <transition :name="transitionDirection" mode="out-in">
                     <v-img class="border-lg border-secondary" v-if="employeesX" :key="employeesX.photo" width="130"
-                    rounded="circle" :src="employeesX?.photo"></v-img>
+                        rounded="circle" :src="employeesX?.photo"></v-img>
                 </transition>
                 <Icon :class="{ 'invisible': !arrowVisibilityRigth }" @click="applyNext"
                     class="cursor-pointer bg-primary" name="uil:arrow-right" color="primary" size="30" />
-                    </div>
-                        <div class="rounded bg-secondary  opacity-60 pa-2 mt-3">
-                            <span class="font-weight-bold text-white ">{{ idEmployee }} / {{ employees.length }}</span>
-                        </div>
-            <div class="text-center">
+            </div>
+            <div class="rounded bg-secondary  opacity-60 pa-2 mt-3">
+                <span class="font-weight-bold text-white ">{{ idEmployee }} / {{ employees.length }}</span>
+            </div>
+            <div class="text-center w-100">
                 <transition :name="transitionDirection" mode="out-in">
                     <div v-if="employeesX" :key="employeesX.id">
                         <v-card-title>{{ employeesX?.name }}</v-card-title>
                         <v-card-subtitle>{{ employeesX?.position }}</v-card-subtitle>
-                        <v-card-text>{{ employeesX?.description }}</v-card-text>
-                        </div>
-                        </transition>
-                        </div>
-                        </div>
-                        </v-card>
+                        <v-sheet max-height="140" class="overflow-auto" color="transparent">
+                            <v-card-text>{{employeesX.description}}</v-card-text>
+                        </v-sheet>
+                    </div>
+                </transition>
+            </div>
+        </div>
+    </v-card>
 </template>
 
 
