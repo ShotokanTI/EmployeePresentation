@@ -1,3 +1,4 @@
+import { useDisplay } from "vuetify";
 import type { Employee } from "~/mocks/employee/interfaces/employee.interface";
 
 function hasPrevious(element: number, collection: any[]): boolean {

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { Employee } from '~/mocks/employee/interfaces/employee.interface';
+import { useWidthTable } from '../../utils/employee/utils.employee.vuetify';
+
 
 let employees: Ref<Employee[]> = ref([]);
 const skeletonLoading: Ref<boolean> = ref(true);
@@ -34,16 +36,16 @@ function goToDetail(event: MouseEvent, { item }: { item: Employee }): void {
 </script>
 
 <template>
-    <div class="my-10 elevation-1 rounded-lg mx-10">
+    <v-container class="my-10 rounded-lg">
         <v-skeleton-loader v-if="skeletonLoading" type="table" width="100%" height="500">
         </v-skeleton-loader>
-        <v-data-table v-else :mobile="$vuetify.display.smAndDown" :hide-default-header="$vuetify.display.mobile"
+        <v-data-table v-else :mobile="$vuetify.display.xs" :hide-default-header="$vuetify.display.xs"
             disable-sort fixed-header @click:row="goToDetail" hide-default-footer :items="employees" :search="search"
-            width="100%" style="max-height: 500px">
+            class="elevation-1" :style="{ 'width': useWidthTable().value + 'px','height':$vuetify.display.smAndDown ? '400px':'500px'}">
             <template v-slot:top>
                 <div
-                    class="d-flex flex-column text-center text-sm-start flex-sm-row justify-center align-center bg-whitesmoke mx-5 mb-2">
-                    <span class="text-h6 text-sm-h4  w-100 font-weigth-bold text-secondary">
+                    class="d-flex flex-column text-center text-md-start flex-md-row justify-center align-center bg-whitesmoke mx-5 mb-2">
+                    <span class="text-h6 text-md-h4  w-100 font-weigth-bold text-secondary">
                         Employee Localization</span>
                     <EmployeeFilter @onFilterApply="handleFilter" />
                 </div>
@@ -58,7 +60,7 @@ function goToDetail(event: MouseEvent, { item }: { item: Employee }): void {
                 </v-sheet>
             </template>
         </v-data-table>
-    </div>
+    </v-container>
 </template>
 
 <style>
