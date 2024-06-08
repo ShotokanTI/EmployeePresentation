@@ -21,6 +21,7 @@ import BreadCrumbApp from "../components/layout/BreadCrumbApp.vue"
 
 <style lang="scss" scoped>
 .v-main{
-    padding:0
+    padding:0;
+    background:#F5F6FC;
 }
 </style>

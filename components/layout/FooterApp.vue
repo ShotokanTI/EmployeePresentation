@@ -1,5 +1,15 @@
-<script setup>
-const ICONS_NAMES = ["uil:github", "uil:linkedin", "uil:youtube"]
+<script setup lang="ts">
+interface Links {
+    name: string;
+    url: string;
+}
+
+const ICONS_NAMES: Links[] = [
+    { name: "uil:github", url: "https://github.com/ShotokanTI/EmployeePresentation" },
+    { name: "uil:linkedin", url: "https://www.linkedin.com/in/full-stack-matheus-barbosa/" },
+    { name: "uil:youtube", url: "https://www.youtube.com/watch?v=Jxq5C67fqWs" }
+];
+
 
 </script>
 
@@ -8,9 +18,11 @@ const ICONS_NAMES = ["uil:github", "uil:linkedin", "uil:youtube"]
         <v-footer name="footer" app color="primary" class="d-flex flex-column pa-0">
             <div class="d-flex flex-column align-center w-100">
                 <div class="d-flex ga-3 ma-3">
-                    <div v-for="name in ICONS_NAMES" :key="name">
+                    <div v-for="item in ICONS_NAMES" :key="name">
                         <div class="icon position-relative">
-                            <Icon class="cursor-pointer icon__item" :name="name" size="30" />
+                            <a style="color:white" :href="item.url" target="_blank">
+                                <Icon class="cursor-pointer icon__item" :name="item.name" size="30" />
+                            </a>
                             <v-divider class="icon__divider position-absolute w-100 mt-1" :thickness="2"></v-divider>
                         </div>
                     </div>
