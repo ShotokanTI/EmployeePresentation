@@ -7,9 +7,9 @@ export function useWidthTable() {
 
     const width = computed(() => {
         switch (name.value) {
-            case 'xs': return 400
-            case 'sm': return 620
-            case 'md': return 950
+            case 'xs': return 440
+            case 'sm': return 400
+            case 'md': return 800
             case 'lg': return 1168
         }
     })

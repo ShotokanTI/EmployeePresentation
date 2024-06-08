@@ -3,12 +3,11 @@ interface Links {
     name: string;
     url: string;
 }
-
-const ICONS_NAMES: Links[] = [
+const icons: Ref<Links[]> = ref([
     { name: "uil:github", url: "https://github.com/ShotokanTI/EmployeePresentation" },
     { name: "uil:linkedin", url: "https://www.linkedin.com/in/full-stack-matheus-barbosa/" },
     { name: "uil:youtube", url: "https://www.youtube.com/watch?v=Jxq5C67fqWs" }
-];
+]);
 
 
 </script>
@@ -18,7 +17,7 @@ const ICONS_NAMES: Links[] = [
         <v-footer name="footer" app color="primary" class="d-flex flex-column pa-0">
             <div class="d-flex flex-column align-center w-100">
                 <div class="d-flex ga-3 ma-3">
-                    <div v-for="item in ICONS_NAMES" :key="name">
+                    <div v-for="item in icons" :key="item.name">
                         <div class="icon position-relative">
                             <a style="color:white" :href="item.url" target="_blank">
                                 <Icon class="cursor-pointer icon__item" :name="item.name" size="30" />
